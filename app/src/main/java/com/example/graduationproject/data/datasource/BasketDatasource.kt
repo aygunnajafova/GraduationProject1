@@ -15,7 +15,12 @@ class BasketDatasource(var fdao: FoodsDao) {
 
     suspend fun loadBasket() : List<FoodsCart> =
         withContext(Dispatchers.IO) {
-            fdao.getCartFoods(USERNAME).foods_cart
+            try {
+                fdao.getCartFoods(USERNAME).foods_cart
+            } catch (ex: Exception) {
+                Log.e(TAG, "Failed to load", ex)
+                emptyList()
+            }
         }
 
     suspend fun add(food: Foods, amount:Int) {

@@ -33,7 +33,7 @@ interface FoodsDao {
 
     @POST("foods/deleteFood.php")
     @FormUrlEncoded
-    suspend fun delete(@Field("id") id: Int,
+    suspend fun delete(@Field("cartId") cartId: Int,
                        @Field ("userName") userName : String) : CRUDResponse
 
 }
