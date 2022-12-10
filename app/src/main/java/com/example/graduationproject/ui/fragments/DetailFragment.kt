@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.graduationproject.R
 import com.example.graduationproject.data.entity.FoodsCart
 import com.example.graduationproject.databinding.FragmentDetailBinding
@@ -29,6 +30,9 @@ class DetailFragment : Fragment() {
 
         val bundle:DetailFragmentArgs by navArgs()
         binding.food = bundle.food
+
+        val imageUrl = "http://kasimadalan.pe.hu/foods/images/${bundle.food.image}"
+        Glide.with(binding.imageViewDetail).load(imageUrl).into(binding.imageViewDetail)
 
         binding.btnAddToCart.setOnClickListener {
             viewModel.add(bundle.food)
