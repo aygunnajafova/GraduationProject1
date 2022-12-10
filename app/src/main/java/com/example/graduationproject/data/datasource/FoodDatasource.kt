@@ -10,9 +10,4 @@ class FoodDatasource(var fdao: FoodsDao) {
         withContext(Dispatchers.IO) {
             fdao.loadFoods().foods
     }
-
-    suspend fun search(searchText:String) : List<Foods> =
-        withContext(Dispatchers.IO) {
-            fdao.search(searchText).foods
-        }
 }

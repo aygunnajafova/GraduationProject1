@@ -26,11 +26,7 @@ class HomeViewModel @Inject constructor(var frepo: FoodRepository) : ViewModel()
 
     fun search(searchText:String) {
         CoroutineScope(Dispatchers.Main).launch {
-           try {
-               foodsList.value = frepo.search(searchText)
-           } catch (e:java.lang.Exception) {
-
-           }
+            foodsList.value = frepo.search(searchText)
         }
     }
 }

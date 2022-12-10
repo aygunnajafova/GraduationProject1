@@ -14,10 +14,6 @@ interface FoodsDao {
     @GET("foods/getAllFoods.php")
     suspend fun loadFoods() : FoodsResponse
 
-    @POST("foods/searchFoods.php")
-    @FormUrlEncoded
-    suspend fun search(@Field("name") searchText: String) : FoodsResponse
-
     @POST("foods/getFoodsCart.php")
     @FormUrlEncoded
     suspend fun getCartFoods(@Field("userName") userName : String) : CartFoodResponse
