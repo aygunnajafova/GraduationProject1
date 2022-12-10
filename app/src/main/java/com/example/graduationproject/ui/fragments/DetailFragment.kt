@@ -27,8 +27,8 @@ class DetailFragment : Fragment() {
 
         binding.toolbarDetailTitle = "Detail"
 
-        //val bundle:DetailFragmentArgs by navArgs()
-        //val resultFood = bundle.food
+        val bundle:DetailFragmentArgs by navArgs()
+        binding.food = bundle.food
 
         binding.btnAddToCart.setOnClickListener {
             val foodCart = FoodsCart(1, "Baklava", "baklava.png",15,"Desserts", 5, "Aygun" )
