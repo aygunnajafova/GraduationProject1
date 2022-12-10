@@ -25,7 +25,7 @@ class DetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         binding.detailFragment = this
 
-        binding.toolbarDetailTitle = "     You will like this!"
+        binding.toolbarDetailTitle = "You will like this!"
 
         val bundle:DetailFragmentArgs by navArgs()
         binding.food = bundle.food
@@ -48,14 +48,11 @@ class DetailFragment : Fragment() {
         binding.btnDecrement.setOnClickListener {
             viewModel.decrement()
         }
-        
-        binding.imageButtonBack.setOnClickListener {
+
+        binding.toolbarDetail.setNavigationIcon(R.drawable.back_arrow_icon)
+        binding.toolbarDetail.setNavigationOnClickListener {
             Navigation.findNavController(it).popBackStack()
         }
-
-
-
-
 
         return binding.root
     }

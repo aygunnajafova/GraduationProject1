@@ -142,15 +142,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
 
-        <ImageButton
-            android:id="@+id/imageButtonBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:backgroundTint="@color/primary"
-            app:layout_constraintStart_toStartOf="@+id/toolbarDetail"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back_arrow_icon" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
