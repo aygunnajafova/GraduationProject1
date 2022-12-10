@@ -24,7 +24,7 @@ class CartFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart, container, false)
         binding.cartFragment = this
-        binding.toolbarCartTitle = "Cart"
+        binding.toolbarCartTitle = "Your Choices"
         binding.foodCartAdapter = FoodCartAdapter(requireContext(), viewModel, viewLifecycleOwner)
 
         viewModel.load()

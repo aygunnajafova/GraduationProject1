@@ -25,7 +25,7 @@ class DetailFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
         binding.detailFragment = this
 
-        binding.toolbarDetailTitle = "Detail"
+        binding.toolbarDetailTitle = "You will like this!"
 
         val bundle:DetailFragmentArgs by navArgs()
         binding.food = bundle.food

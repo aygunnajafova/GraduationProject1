@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.graduationproject.R
 import com.example.graduationproject.data.entity.FoodsCart
 import com.example.graduationproject.databinding.CartCardDesignBinding
@@ -45,6 +46,9 @@ class FoodCartAdapter(var mContext: Context,
                 }
                 .show()
         }
+
+        val url = "http://kasimadalan.pe.hu/foods/images/${foodCart.image}"
+        Glide.with(holder.itemView).load(url).override(300,300).into(b.imageViewCart)
     }
 
     override fun getItemCount(): Int {

@@ -26,7 +26,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_home, container, false)
         binding.homeFragment = this
 
-        binding.toolbarHomeTitle = "Home"
+        binding.toolbarHomeTitle = "Great Foods are waiting for you!"
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
 
 
