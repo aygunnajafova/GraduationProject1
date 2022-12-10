@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.graduationproject.R
@@ -29,10 +30,7 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbarHome)
 
 
-        viewModel.foodsList.observe(viewLifecycleOwner) {
-            val foodAdapter = FoodAdapter(requireContext(),it)
-            binding.foodAdapter = foodAdapter
-        }
+        binding.foodAdapter = FoodAdapter(requireContext(), viewModel.foodsList, viewLifecycleOwner)
 
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
