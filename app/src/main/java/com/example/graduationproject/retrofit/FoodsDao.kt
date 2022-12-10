@@ -1,6 +1,7 @@
 package com.example.graduationproject.retrofit
 
 import com.example.graduationproject.data.entity.CRUDResponse
+import com.example.graduationproject.data.entity.CartFoodResponse
 import com.example.graduationproject.data.entity.FoodsResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -17,14 +18,22 @@ interface FoodsDao {
     @FormUrlEncoded
     suspend fun search(@Field("name") searchText: String) : FoodsResponse
 
-    @POST("foods/addFoods.php")
+    @POST("foods/getFoodsCart.php")
     @FormUrlEncoded
-    suspend fun add(@Field("id") id: Int,
-                    @Field("name") searchText: String,
-                    @Field("amount") amount: Int) : CRUDResponse
+    suspend fun getCartFoods(@Field("userName") userName : String) : CartFoodResponse
 
-    @POST("foods/deleteFoods.php")
+    @POST("foods/insertFood.php")
     @FormUrlEncoded
-    suspend fun delete(@Field("id") id: Int) : CRUDResponse
+    suspend fun add(@Field ("name") name : String,
+                    @Field ("image") image : String,
+                    @Field ("price") price : Int,
+                    @Field ("category") category : String,
+                    @Field ("orderAmount") orderAmount : Int,
+                    @Field ("userName") userName : String) : CRUDResponse
+
+    @POST("foods/deleteFood.php")
+    @FormUrlEncoded
+    suspend fun delete(@Field("id") id: Int,
+                       @Field ("userName") userName : String) : CRUDResponse
 
 }

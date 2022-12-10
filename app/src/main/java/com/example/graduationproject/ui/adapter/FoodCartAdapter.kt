@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.graduationproject.R
 import com.example.graduationproject.data.entity.FoodsCart
@@ -13,9 +14,15 @@ import com.example.graduationproject.ui.viewmodel.CartViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class FoodCartAdapter(var mContext: Context,
-                      var foodsCartList:List<FoodsCart>,
-                      var viewModel: CartViewModel)
+                      var viewModel: CartViewModel,
+                      lifecycleOwner: LifecycleOwner)
     : RecyclerView.Adapter<FoodCartAdapter.CartCardDesignHolder>() {
+
+    init {
+        viewModel.items.observe(lifecycleOwner) {
+            notifyDataSetChanged()
+        }
+    }
 
     inner class CartCardDesignHolder(var binding:CartCardDesignBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -26,20 +33,22 @@ class FoodCartAdapter(var mContext: Context,
     }
 
     override fun onBindViewHolder(holder: CartCardDesignHolder, position: Int) {
-        val foodCart = foodsCartList.get(position)
+        val foodCart = viewModel.items.value!![position]
         val b = holder.binding
-        b.foodCart = foodCart
 
+        b.foodCart = foodCart
         b.imageViewDelete.setOnClickListener {
-            Snackbar.make(it, "Do you want to remove ${foodCart.name} from cart?", Snackbar.LENGTH_SHORT)
+            Snackbar
+                .make(it, "Do you want to remove ${foodCart.name} from cart?", Snackbar.LENGTH_SHORT)
                 .setAction("YES") {
                     viewModel.delete(foodCart.cartId)
-                }.show()
+                }
+                .show()
         }
     }
 
     override fun getItemCount(): Int {
-        return foodsCartList.size
+        return viewModel.items.value?.size ?: 0
     }
 
 }

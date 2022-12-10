@@ -1,6 +1,8 @@
 package com.example.graduationproject.di
 
+import com.example.graduationproject.data.datasource.BasketDatasource
 import com.example.graduationproject.data.datasource.FoodDatasource
+import com.example.graduationproject.data.repo.BasketRepository
 import com.example.graduationproject.data.repo.FoodRepository
 import com.example.graduationproject.retrofit.ApiUtils
 import com.example.graduationproject.retrofit.FoodsDao
@@ -21,8 +23,20 @@ class AppModule {
 
     @Provides
     @Singleton
+    fun provideBasketRepository(bds: BasketDatasource) : BasketRepository {
+        return BasketRepository(bds)
+    }
+
+    @Provides
+    @Singleton
     fun provideFoodDatasource(fdao: FoodsDao) : FoodDatasource {
         return FoodDatasource(fdao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideBasketDatasource(fdao: FoodsDao) : BasketDatasource {
+        return BasketDatasource(fdao)
     }
 
     @Provides

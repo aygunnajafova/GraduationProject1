@@ -25,17 +25,9 @@ class CartFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cart, container, false)
         binding.cartFragment = this
         binding.toolbarCartTitle = "Cart"
+        binding.foodCartAdapter = FoodCartAdapter(requireContext(), viewModel, viewLifecycleOwner)
 
-        val foodsCartList = ArrayList<FoodsCart>()
-        val f1 = FoodsCart(9,"Sutlac","sutlac.png",6,"Desserts",5,"Aygun")
-        val f2 = FoodsCart(6,"Pizza","pizza.png",9,"Meals",5,"Aygun")
-        val f3 = FoodsCart(14,"Water","water.png",1,"Drinks",5,"Aygun")
-        foodsCartList.add(f1)
-        foodsCartList.add(f2)
-        foodsCartList.add(f3)
-
-        val adapter = FoodCartAdapter(requireContext(),foodsCartList, viewModel)
-        binding.foodCartAdapter = adapter
+        viewModel.load()
 
         return binding.root
     }

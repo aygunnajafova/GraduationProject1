@@ -31,8 +31,5 @@
         android:name="com.example.graduationproject.ui.fragments.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart" >
-        <argument
-            android:name="foodCart"
-            app:argType="com.example.graduationproject.data.entity.FoodsCart" />
     </fragment>
 </navigation>

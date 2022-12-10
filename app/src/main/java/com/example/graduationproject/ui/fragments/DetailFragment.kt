@@ -31,21 +31,22 @@ class DetailFragment : Fragment() {
         binding.food = bundle.food
 
         binding.btnAddToCart.setOnClickListener {
-            val foodCart = FoodsCart(1, "Baklava", "baklava.png",15,"Desserts", 5, "Aygun" )
-            val transition = DetailFragmentDirections.toCart(foodCart = foodCart)
-            Navigation.findNavController(it).navigate(transition)
+            viewModel.add(bundle.food)
+
+            Navigation.findNavController(it).popBackStack()
             Snackbar.make(it, "Added to Cart", Snackbar.LENGTH_SHORT).show()
         }
 
-        var amount = 0
-        binding.textViewAmount.text = amount.toString()
+        binding.textViewAmount.text = "0"
+        viewModel.amount.observe(viewLifecycleOwner) {
+            binding.textViewAmount.text = it.toString()
+        }
+
         binding.btnIncrement.setOnClickListener {
-            amount ++
-            binding.textViewAmount.text = amount.toString()
+            viewModel.increment()
         }
         binding.btnDecrement.setOnClickListener {
-            if(amount > 0) amount --
-            binding.textViewAmount.text = amount.toString()
+            viewModel.decrement()
         }
 
 
@@ -56,10 +57,6 @@ class DetailFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val tempViewModel:DetailViewModel by viewModels()
         viewModel = tempViewModel
-    }
-
-    fun add(id:Int, name:String, amount:Int) {
-        viewModel.add(id,name,amount)
     }
 
 }
