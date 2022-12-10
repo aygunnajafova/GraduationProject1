@@ -66,4 +66,10 @@ class HomeFragment : Fragment(), SearchView.OnQueryTextListener {
         viewModel.loadFoods()
         //Return to HomeFragment and reload persons
     }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val tempViewModel: HomeViewModel by viewModels()
+        viewModel = tempViewModel
+    }
 }
