@@ -27,9 +27,10 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:text="@{food.category}"
+            android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toBottomOf="@+id/textViewPrice" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/textView5"
@@ -38,6 +39,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:text="Category:"
+            android:textColor="@color/text_color"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -70,8 +72,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:fontFamily="@font/pattaya"
             android:text="@{food.name}"
-            android:textSize="20sp"
+            android:textColor="@color/text_color"
+            android:textSize="22sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,27 +86,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="2dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="30dp"
             android:text="0"
+            android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/btnDecrement"
             app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
         <ImageButton
             android:id="@+id/btnIncrement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_marginStart="2dp"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/primary"
             android:src="@drawable/add_icon"
             app:layout_constraintStart_toEndOf="@+id/textViewAmount"
             app:layout_constraintTop_toBottomOf="@+id/textViewName" />
 
         <ImageButton
             android:id="@+id/btnDecrement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="45dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
+            android:backgroundTint="@color/accent"
             android:src="@drawable/remove_icon"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewName" />
@@ -114,6 +121,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="20dp"
             android:text="Price:"
+            android:textColor="@color/text_color"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnDecrement" />
@@ -125,7 +133,9 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:text="@{String.valueOf(food.price)}"
-            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/btnIncrement" />
 
@@ -137,9 +147,21 @@
             android:text="Add To Cart"
             android:textAllCaps="false"
             android:textSize="20sp"
+            app:cornerRadius="15dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textViewCategory" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="24dp"
+            android:text="AZN"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/textViewPrice"
+            app:layout_constraintTop_toBottomOf="@+id/btnIncrement" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

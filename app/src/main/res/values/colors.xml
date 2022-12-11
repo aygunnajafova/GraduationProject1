@@ -11,5 +11,6 @@
     <color name="primary">#ffb923</color>
     <color name="accent">#ffb923</color>
     <color name="g_black">#33405f</color>
+    <color name="text_color">#7b3f00</color>
 
 </resources>
